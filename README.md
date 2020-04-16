@@ -2,4 +2,4 @@
 
 <a href="https://rozantsew.github.io/To-do-list/">Click to see demo</a>
 
-<br> <br>
+<br>
