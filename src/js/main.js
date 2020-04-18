@@ -1,33 +1,53 @@
-const corectAnswers = ['A', 'B', 'B', 'B'];
-const form = document.querySelector('.quiz-form');
-const result = document.querySelector('.result');
+const addForm = document.querySelector('.add');
+const list = document.querySelector('.todos');
+const search = document.querySelector('.search input');
 
-form.addEventListener('submit', e =>{
+
+
+const generateTemplate = todo => { // create box for todo
+    const html = `
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+    <span>
+        ${todo}
+    </span>
+    <i class="fa fa-trash delete trash" aria-hidden="true"></i>
+</li>
+    `;
+    list.innerHTML += html;
+};
+
+
+
+
+addForm.addEventListener('submit', e => {
     e.preventDefault();
+    const todo = addForm.add.value.trim(); // take the value form input by using name="add" from input
 
-    let score = 0;
-    const userAnswers = [form.q1.value, form.q2.value, form.q3.value, form.q4.value];
-
-    // check answers
-    userAnswers.forEach((answer, index) => {
-        if(answer === corectAnswers[index]){
-            score += 25;
-        }
-    });
-// show result on page
-
-scrollTo(0,0);
-result.style.display = 'block';
-
-let output = 0;
-const timer = setInterval(() => {
-    result.querySelector('span').textContent = `${output}%`;
-    if(output === score) {
-        clearInterval(timer);
-    } else {
-        output++;
+    if(todo.length){ // check if an input has a value
+        generateTemplate(todo);
+        addForm.reset();
     }
-
-    },10);
 });
 
+// delete todos
+list.addEventListener('click', e => {
+    if(e.target.classList.contains('delete')){
+        e.target.parentElement.remove();
+    }
+});
+
+const filterTodos = (term) => {
+    Array.from(list.children)
+        .filter((todo) => !todo.textContent.toLowerCase().includes(term))
+        .forEach((todo) => todo.classList.add('filtered'));
+
+    Array.from(list.children)
+        .filter((todo) => todo.textContent.toLowerCase().includes(term))
+        .forEach((todo) => todo.classList.remove('filtered'));
+};
+
+// keyup event
+search.addEventListener('keyup', () => {
+    const term = search.value.trim().toLowerCase();
+    filterTodos(term);
+});

@@ -11,17 +11,48 @@
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
 
+<!-- Font awesome link -->
+<script src="https://use.fontawesome.com/e40e696575.js"></script>
 
 <link rel="stylesheet" href="src/css/main.css">
 </head>
 <body>
+    <div class="container">
+    <header class="text-center text-light my-4">
+        <h1 class="mb-4">
+            To do list
+        </h1>
+        <form class="search">
+            <input class="form-control m-auto" type="text" name="search" placeholder="search todos">
+        </form>
+    </header>
 
+    <ul class="list-group todos mx-auto text-light">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>
+                play mariokart
+            </span>
+            <i class="fa fa-trash delete trash" aria-hidden="true"></i>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>
+                defeat ganon in zelda
+            </span>
+            <i class="fa fa-trash delete trash" aria-hidden="true"></i>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>
+                make a veggie pie
+            </span>
+            <i class="fa fa-trash delete trash" aria-hidden="true"></i>
+        </li> 
+    </ul>
 
-<h1>
-    To do list
-</h1>
-
-
+    <form action="" class="add text-center my-4">
+        <label class="text-light">Add a new todo...</label>
+        <input class="form-control m-auto" type="text" name="add">
+    </form>
+</div>
 
 
 
